@@ -7,30 +7,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class Accueil
- */
-@WebServlet("/Accueil")
-public class Accueil extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public Accueil() {
-    	
+@WebServlet("/Inscription")
+public class Inscription extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+     
+    public Inscription() {
+        super();
+        System.out.println("je suis dedans");
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);
-		dispatcher.forward(request, response);
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("je suis dedans");
+		this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
+		
+	//	response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

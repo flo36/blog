@@ -10,10 +10,10 @@
 <body>
 	<h1> Bienvenue sur le blog</h1>
 	    	
-	    		<img src="././images/logo_orange.jpg" alt="logo" width="30%" >	
+	    		<img src="./images/logo_orange.jpg" alt="logo" width="30%" >	
 	    	
 	    	<section>
-	    		  <button onclick="window.location.href = 'https://fr.w3docs.com/';" ><p>Inscription</p></button>
+	    		  <button onclick="window.location.href = '././Inscripton';" ><p>Inscription</p></button>
 	    		  <button onclick="window.location.href = 'https://fr.w3docs.com/';"><p>Connexion</p></button>
 	    	</section>
 </body>
