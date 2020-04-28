@@ -18,6 +18,7 @@ public class Amitie {
 	private static String ADD_AMITIES_SQL = "INSERT INTO amities VALUES ('";
 	
 	
+	
 	Amitie( int _numUser1, int _numUser2)
 	{
 		this.idUser1 = _numUser1;
@@ -29,6 +30,14 @@ public class Amitie {
 		this.id = _id;
 		this.idUser1 = _numUser1;
 		this.idUser2 = _numUser2;
+	}
+	
+	public int getIdUser1() {
+		return idUser1;
+	}
+	
+	public int getIdUser2() {
+		return idUser2;
 	}
 	
 	public ArrayList<Amitie> recupAmities()
@@ -81,5 +90,7 @@ public class Amitie {
 			return false;
 		} 
 	}
+	
+	
 	
 }

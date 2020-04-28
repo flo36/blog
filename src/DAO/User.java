@@ -17,8 +17,10 @@ public class User {
 	String pseudo;
 	String mdp;
 	
-	private static String FETCH_USERS_SQL = "SELECT id, firstname, lastname FROM users";
+	private static String FETCH_USERS_SQL = "SELECT id, email, pseudo FROM users";
 	private static String ADD_USERS_SQL = "INSERT INTO users VALUES ('";
+	private static String PARTICULAR_USER_SQL = "SELECT pseudo FROM users WHERE ";
+	
 	
 	public User(String _email, String _pseudo, String _mdp)
 	{
@@ -93,7 +95,6 @@ public class User {
 	public boolean identification()
 	{
 		boolean identification = false;
-		ArrayList<User> listUsers = new ArrayList<User>();
 		Connection connection = dbConnect.getInstance();
 		Statement stmt;
 
@@ -131,7 +132,7 @@ public class User {
 		
 		try {
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery(FETCH_USERS_SQL);
+			ResultSet rs = stmt.executeQuery(PARTICULAR_USERS_SQL);
 			// Loop over the database result set and create the
 			// user objects.
 			while (rs.next()) {
@@ -157,6 +158,55 @@ public class User {
 			
 			return false;
 		} 
+	}
+	
+	public ArrayList<String> vosAmities()
+	{
+		ArrayList<String> listDesNoms = new ArrayList<String>();
+		ArrayList<Amitie> listAmities = new ArrayList<Amitie>();
+
+			Amitie tempo = new Amitie (0, 0);
+			listAmities = tempo.recupAmities();
+			// Loop over the database result set and create the
+			// user objects.
+			
+			for(Amitie a: listAmities) {
+				
+				if(a.getIdUser1() == this.getId())
+				{
+					listDesNoms.add(this.nomPersonne(a.getIdUser2()));
+				}
+				if(a.getIdUser2() == this.getId())
+				{
+					listDesNoms.add(this.nomPersonne(a.getIdUser1()));
+				}
+				
+			}
+		
+		return listDesNoms;
+	}
+	
+	public String nomPersonne(int id)
+	{
+		Connection connection = dbConnect.getInstance();
+		Statement stmt;
+		try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(PARTICULAR_USER_SQL + "id = " + id);
+			String res = rs.getString(0);
+			
+			rs.close();
+			stmt.close();
+			
+			return res;
+			 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+		
 	}
 		
 }
