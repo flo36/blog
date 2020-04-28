@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Connexion title here</title>
+<title>Connexion</title>
 <link rel="stylesheet" href="././fichier_css/inscription.css" />
 </head>
 <body>

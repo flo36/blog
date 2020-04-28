@@ -1,4 +1,4 @@
-package projet_blog;
+package DAO;
 
 public class Commentaire {
 	

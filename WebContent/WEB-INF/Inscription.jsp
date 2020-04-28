@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="././fichier_css/inscription.css" />
 <title>Inscription</title>
+
 </head>
 <body>
 	
@@ -14,19 +16,19 @@
 	    	
 	    <form action="" method="POST">
 	    	<div>
-			<label for="pseudo">Pseudo : </label> <input type="text" id="pseudo" />
+			<label for="pseudo">Pseudo : </label> <input type="text" name="pseudo" />
 			
 			</div>
 			<div>
-			<label for="email">Email : </label> <input type="text" id="email" />
+			<label for="email">Email : </label> <input type="text" name="email" />
 			
 			</div>
 			<div>
-			<label for="password">Password : </label> <input type="password" id="password" />
+			<label for="password">Password : </label> <input type="password" name="password" />
 			
 			</div>
 			<div>
-			<label for="repeat">Repeat Password : </label> <input type="text" id="repeat" />
+			<label for="repeat">Repeat Password : </label> <input type="password" name="repeat" />
 			
 			</div>
 			

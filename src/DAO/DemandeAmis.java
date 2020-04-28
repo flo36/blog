@@ -1,4 +1,4 @@
-package projet_blog;
+package DAO;
 
 public class DemandeAmis {
 
@@ -17,6 +17,11 @@ public class DemandeAmis {
 		this.id = _id;
 		this.demandeur = _numUser1;
 		this.receveur = _numUser2;
+	}
+	
+	public String toString()
+	{
+		return "";
 	}
 	
 }

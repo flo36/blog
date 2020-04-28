@@ -13,8 +13,15 @@
 	    		<img src="./images/logo_orange.jpg" alt="logo" width="30%" >	
 	    	
 	    	<section>
-	    		  <button onclick="window.location.href = '././Inscripton';" ><p>Inscription</p></button>
-	    		  <button onclick="window.location.href = 'https://fr.w3docs.com/';"><p>Connexion</p></button>
+	    		  
+	    		<form action="./Inscription" method="GET">
+					<input type="submit" value="Inscription " id="submit" />
+				</form>
+				
+				<form action="./Connexion" method="GET">
+					<input type="submit" value="Connexion" id="submit" />
+				</form>
+	    		  
 	    	</section>
 </body>
 </html>
