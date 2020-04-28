@@ -11,7 +11,7 @@ public class dbConnect {
 	/**
 	 * DSN to connect to the database
 	 */
-	static final String DB_URL = "jdbc:mysql://localhost:3306/blog";
+	static final String DB_URL = "jdbc:mysql://localhost:3306/bdd_connexion";
 
 	/**
 	 * Username to connect to the database

@@ -3,9 +3,10 @@ package DAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
-import java.sql.Statement;
+import org.apache.tomcat.util.security.MD5Encoder;
 
 import bdd_Connexion.dbConnect;
 
@@ -16,7 +17,7 @@ public class User {
 	String pseudo;
 	String mdp;
 	
-	private static String FETCH_USERS_SQL = "SELECT id, firstname, lastname FROM user";
+	private static String FETCH_USERS_SQL = "SELECT id, firstname, lastname FROM users";
 	private static String ADD_USERS_SQL = "INSERT INTO users VALUES ('";
 	
 	public User(String _email, String _pseudo, String _mdp)
@@ -50,6 +51,10 @@ public class User {
 	
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	public String toString()
@@ -137,6 +142,7 @@ public class User {
 				}
 				
 			}
+
 			 rs = stmt.executeQuery(ADD_USERS_SQL + this.pseudo + " ' , ' "
 												+ this.email + " ' , ' " 
 												+ this.mdp + " ' );");
