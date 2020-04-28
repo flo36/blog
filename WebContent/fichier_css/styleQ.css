@@ -1,0 +1,18 @@
+/* CSS de Quentin */
+body{
+    background-color: red;
+}
+
+header{
+    border-bottom: solid black;
+}
+
+.logo {
+    background-image: url(../images/logo_orange.jpg);
+    background-repeat: no-repeat;
+    height: 150px;
+    width: 150px;
+    background-size: 150px;
+}
+
+
