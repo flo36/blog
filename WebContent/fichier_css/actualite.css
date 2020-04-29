@@ -1,12 +1,12 @@
 html
 {
-	background-color: rgb(200,200,200);
+	background-color: rgb(230,230,230);
 }
 
 nav
 {
 	width: 100%;
-	height: 20%;
+	height: 50px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -29,7 +29,7 @@ nav
 {
 	display: block;
 	width: 20%;
-	height: 100%;
+	height: 600px;
 	flex-direction: column;
 	justify-content: flex-end;
 	box-sizing: border-box
@@ -42,7 +42,7 @@ nav
 	height: 70%;
 	border: solid white;	
 	text-align: justify-all;
-	background-color: rgb(250,250,250);
+	background-color: rgb(300,300,300);
 	color: orange;
 	margin-bottom: 3%;
 	box-sizing: border-box;
@@ -53,9 +53,9 @@ nav
 {
 	display: block;
 	width: 100%;
-	height: 20%;
+	height: 150px;
 	border: solid white;	
-	background-color: rgb(250,250,250);
+	background-color: rgb(300,300,300);
 	color: orange;
 	margin-top: 1%;
 	padding-bottom: 20%;
@@ -64,3 +64,7 @@ nav
 	overflow : hidden;
 }
 
+nav button{
+    height: 50%;
+    margin-top: 15px;
+}
