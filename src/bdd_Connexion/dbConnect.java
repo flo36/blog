@@ -7,11 +7,11 @@ public class dbConnect {
 	/**
 	 * JDBC driver's class name
 	 */
-	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	/**
 	 * DSN to connect to the database
 	 */
-	static final String DB_URL = "jdbc:mysql://localhost:3306/bdd_connexion";
+	static final String DB_URL = "jdbc:mysql://localhost/bdd_blog";
 
 	/**
 	 * Username to connect to the database

@@ -44,7 +44,8 @@ public class Connexion extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String email = request.getParameter("email");
-		String mdp = request.getParameter("password");
+		String mdp = request.getParameter("mdp");
+		System.out.println(email +",+ " + mdp);
 		User u = new User(email,null,mdp);
 				
 				if(u.identification())
@@ -55,7 +56,7 @@ public class Connexion extends HttpServlet {
 					session.setAttribute("pseudo", u.getPseudo());
 					
 					// redirection vers la page des posts
-					//this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
+					this.getServletContext().getRequestDispatcher("/Actualite").forward(request, response);
 					
 				}
 				else

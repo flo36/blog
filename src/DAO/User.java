@@ -17,8 +17,8 @@ public class User {
 	String pseudo;
 	String mdp;
 	
-	private static String FETCH_USERS_SQL = "SELECT id, email, pseudo FROM users";
-	private static String ADD_USERS_SQL = "INSERT INTO users VALUES ('";
+	private static String FETCH_USERS_SQL = "SELECT id, email, pseudo, mdp FROM users";
+	private static String ADD_USERS_SQL = "INSERT INTO users(email, pseudo, mdp) VALUES ('";
 	private static String PARTICULAR_USER_SQL = "SELECT pseudo FROM users WHERE ";
 	
 	
@@ -106,7 +106,8 @@ public class User {
 			while (rs.next()) {
 				
 				User u = new User(rs.getInt("id"), rs.getString("email"), rs.getString("pseudo"), rs.getString("mdp"));
-				
+				System.out.println(this.email);
+				System.out.println(this.mdp);
 				if(this.email.equals(u.email) && this.mdp.equals(u.mdp))
 				{// email et mdp qui coincident
 					this.setPseudo(rs.getString("pseudo"));
@@ -132,7 +133,7 @@ public class User {
 		
 		try {
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery(PARTICULAR_USERS_SQL);
+			ResultSet rs = stmt.executeQuery(FETCH_USERS_SQL);
 			// Loop over the database result set and create the
 			// user objects.
 			while (rs.next()) {
@@ -144,9 +145,9 @@ public class User {
 				
 			}
 
-			 rs = stmt.executeQuery(ADD_USERS_SQL + this.pseudo + " ' , ' "
-												+ this.email + " ' , ' " 
-												+ this.mdp + " ' );");
+			 stmt.executeUpdate(ADD_USERS_SQL + this.pseudo + "','"
+												+ this.email + "','" 
+												+ this.mdp + "');");
 			 
 			 rs.close();
 			 stmt.close();
@@ -155,7 +156,7 @@ public class User {
 
 		}catch (SQLException e) {
 			e.printStackTrace();
-			
+			System.out.println("erreur");
 			return false;
 		} 
 	}

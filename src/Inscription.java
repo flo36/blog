@@ -48,7 +48,8 @@ public class Inscription extends HttpServlet {
 		
 		if(!repeatMdp.equals(mdp))
 		{ // les mdp ne sont pas identiques, retour au formulaire
-			this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
+			System.out.println("probleme 1");
+			this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
 		}
 		
 		User u = new User(email,pseudo,mdp);
@@ -61,13 +62,14 @@ public class Inscription extends HttpServlet {
 					session.setAttribute("pseudo", u.getPseudo());
 					
 					// redirection vers la page des posts
-					//this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
+					this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
 					
 				}
 				else
 				{
 					// connexion pas bonne, on retourne au formulaire
-					this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
+					System.out.println("probleme 2");
+					this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
 				}
 		
 	}
