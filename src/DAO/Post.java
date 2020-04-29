@@ -11,7 +11,7 @@ import bdd_Connexion.dbConnect;
 public class Post {
 
 	int id;
-	int numUser;
+	int idUser;
 	String titre;
 	String texte;
 	
@@ -20,7 +20,7 @@ public class Post {
 	
 	Post(int _numUser, String _titre, String _texte)
 	{
-		this.numUser = _numUser;
+		this.idUser = _numUser;
 		this.titre = _titre;
 		this.texte = _texte;
 	}
@@ -28,7 +28,7 @@ public class Post {
 	Post(int _id,int _numUser, String _titre, String _texte)
 	{
 		this.id = _id;
-		this.numUser = _numUser;
+		this.idUser = _numUser;
 		this.titre = _titre;
 		this.texte = _texte;
 	}
@@ -38,7 +38,7 @@ public class Post {
 	}
 	
 	public int getNumUser() {
-		return numUser;
+		return idUser;
 	}
 	
 	public String getTexte() {
@@ -82,6 +82,22 @@ public class Post {
 		return listPosts;
 	}
 	
+	public ArrayList<Post> filActualite(User u)
+	{
+		ArrayList<Post> filActualite = new ArrayList<Post>();
+		ArrayList<Post> tousLesPosts = this.recupPosts();
+		
+		for(Post p: tousLesPosts)
+		{
+			if (u.estUnAmi(p.idUser))
+			{
+				filActualite.add(p);
+			}
+		}
+		
+		return filActualite;
+	}
+	
 	public boolean addPost()
 	{
 		boolean ajout = false;
@@ -92,7 +108,7 @@ public class Post {
 			stmt = connection.createStatement();
 			
 
-			ResultSet rs = stmt.executeQuery(ADD_POSTS_SQL + this.numUser + " ' , ' "
+			ResultSet rs = stmt.executeQuery(ADD_POSTS_SQL + this.idUser + " ' , ' "
 												+ this.titre + " ' , ' " 
 												+ this.texte + " ' );");
 			 

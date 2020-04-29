@@ -209,5 +209,24 @@ public class User {
 		return null;
 		
 	}
+	
+	public boolean estUnAmi(int idAmis)
+	{
+		
+		ArrayList<Amitie> listAmities = new ArrayList<Amitie>();
+		for(Amitie a: listAmities)
+		{
+			if(a.getIdUser1()==this.id && a.getIdUser2()==idAmis)
+			{
+				return true;
+			}
+			if(a.getIdUser2()==this.id && a.getIdUser1()==idAmis)
+			{
+				return true;
+			}
+			
+		}
+		 return false;
+	}
 		
 }

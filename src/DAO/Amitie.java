@@ -15,7 +15,7 @@ public class Amitie {
 	int idUser2;
 	
 	private static String FETCH_AMITIES_SQL = "SELECT id, idUser1, idUser2 FROM amities";
-	private static String ADD_AMITIES_SQL = "INSERT INTO amities VALUES ('";
+	private static String ADD_AMITIES_SQL = "INSERT INTO amities (idUser1,idUser2) VALUES ('";
 	
 	
 	
