@@ -106,4 +106,21 @@ public class Commentaire {
 		} 
 	}
 	
+	public ArrayList<Commentaire>  commentaireDuPost(int idPost)
+	{
+		   ArrayList<Commentaire> commentairePost = new ArrayList<Commentaire>();
+		Commentaire tempo = new Commentaire(0,0,null);
+	    ArrayList<Commentaire> tousLesCommentaires = tempo.recupCommentaires();
+	    
+	    for(Commentaire c: tousLesCommentaires)
+	    {
+	    	if(c.getIdPost()== idPost)
+	    	{
+	    		commentairePost.add(c);
+	    	}
+	    }
+	    
+	    return commentairePost;
+	}
+	
 }

@@ -166,14 +166,18 @@ public class User {
 	{
 		Connection connection = dbConnect.getInstance();
 		Statement stmt;
+		String res = "";
 		try {
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(PARTICULAR_USER_SQL + "id = " + id);
-			String res = rs.getString(0);
+			while(rs.next())
+			{
+				res = rs.getString("pseudo");
+			}
 			
 			rs.close();
 			stmt.close();
-			
+			System.out.println("dans la méthode : " + res);
 			return res;
 			 
 		} catch (SQLException e) {

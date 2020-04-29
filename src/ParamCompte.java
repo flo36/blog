@@ -1,28 +1,23 @@
 
 
 import java.io.IOException;
-
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import DAO.User;
 
 /**
- * Servlet implementation class Connexion
+ * Servlet implementation class ParamCompte
  */
-@WebServlet("/Connexion")
-public class Connexion extends HttpServlet {
+@WebServlet("/ParamCompte")
+public class ParamCompte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Connexion() {
+    public ParamCompte() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,31 +38,7 @@ public class Connexion extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		String email = request.getParameter("email");
-		String mdp = request.getParameter("mdp");
-		System.out.println(email +",+ " + mdp);
-		User u = new User(email,null,mdp);
-				
-				if(u.identification())
-				{
-					// connexion bonne, on attribue une session
-					HttpSession session = request.getSession();
-					session.setAttribute("id", u.getId());
-					session.setAttribute("pseudo", u.getPseudo());
-					session.setAttribute("idPost", 0);
-					
-					// redirection vers la page des posts
-					this.getServletContext().getRequestDispatcher("/Actualite").forward(request, response);
-					
-				}
-				else
-				{
-					// connexion pas bonne, on retourne au formulaire
-					this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
-				}
-		
-		
+		doGet(request, response);
 	}
 
 }

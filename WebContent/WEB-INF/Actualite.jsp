@@ -43,52 +43,54 @@
 		{
 			String titre= "";
 			String texte=""; 
+			int id=0;
 			
 		%>
 
 
 	<section id = "ligne">
 		<%
-		if(filActualite.get(i)!= null)
+		if(i<filActualite.size() && filActualite.get(i)!= null )
 		{
-			System.out.println("i : " + i + " " + filActualite.get(i));
+			id = filActualite.get(i).getId();
+			System.out.println("l'id dans le for apres modif : " + id);
+			titre = filActualite.get(i).getTitre();
+			texte = filActualite.get(i).getTexte();
+			i+=1;
+		}else {titre = ""; texte = "";}
+		%>
+		<div id="actualite" onclick="window.location.href='./postSpec?idPost=' +id+';'"> <div id="post"> <h4><% out.println(titre); %> </h4><p> <% out.println(texte);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
+		<%
+		if(i<filActualite.size() && filActualite.get(i)!= null )
+		{
+			titre = filActualite.get(i).getTitre();
+			texte = filActualite.get(i).getTexte();
+			i+=1;
+		}else {titre = ""; texte = "";}
+		%>
+		<div id="actualite" onclick="window.location.href='./PostSpec?idPost=' +id+';'"> <div id="post"> <h4><% out.println(titre); %> </h4><p> <% out.println(texte);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
+		<%
+		if(i<filActualite.size() && filActualite.get(i)!= null )
+		{
+			titre = filActualite.get(i).getTitre();
+			texte = filActualite.get(i).getTexte();
+			i+=1;
+		}else {titre = ""; texte = "";}
+		%>
+		<div id="actualite" onclick="window.location.href='./PostSpec?idPost=' +id+';'"> <div id="post"> <h4><% out.println(titre); %> </h4><p> <% out.println(texte);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
+		<%
+		if(i<filActualite.size() && filActualite.get(i)!= null )
+		{
 			titre = filActualite.get(i).getTitre();
 			texte = filActualite.get(i).getTexte();
 		}else {titre = ""; texte = "";}
 		%>
-		<div id="actualite"> <div id="post"> <h4><% out.println(titre); %> </h4><p> <% out.println(texte);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
-		<%
-		if(filActualite.get(i+1)!= null)
-		{
-			System.out.println("i : " + i+1 + " " + filActualite.get(i+1));
-			titre = filActualite.get(i+1).getTitre();
-			texte = filActualite.get(i+1).getTexte();
-		}else {titre = ""; texte = "";}
-		%>
-		<div id="actualite"> <div id="post"> <h4><% out.println(titre); %> </h4><p> <% out.println(texte);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
-		<%
-		if(filActualite.get(i+2)!= null)
-		{
-			titre = filActualite.get(i+2).getTitre();
-			texte = filActualite.get(i+2).getTexte();
-		}else {titre = ""; texte = "";}
-		%>
-		<div id="actualite"> <div id="post"> <h4><%= titre  %> </h4><p> <% out.println(texte);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
-		<%
-		if(filActualite.get(i+3)!= null)
-		{
-			System.out.println("i : " + i+3 + " " + filActualite.get(i+3));
-			titre = filActualite.get(i+3).getTitre();
-			texte = filActualite.get(i+3).getTexte();
-		}else {titre = ""; texte = "";}
-		%>
-		<div id="actualite"> <div id="post"> <h4><% out.println(titre); %> </h4><p> <% out.println(texte);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
+		<div id="actualite" onclick="window.location.href='./postSpec?idPost=' +id+';'"> <div id="post"> <h4><% out.println(titre); %> </h4><p> <% out.println(texte);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
 		
 	</section>
 
 		<%
 		
-		i+=3;
 		}
 		
 		%>
