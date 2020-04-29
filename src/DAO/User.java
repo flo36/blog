@@ -107,12 +107,6 @@ public class User {
 			while (rs.next()) {
 				
 				User u = new User(rs.getInt("id"), rs.getString("email"), rs.getString("pseudo"), rs.getString("mdp"));
-				System.out.println("identif : "+this.email);
-				System.out.println("identif : "+this.mdp);
-				System.out.println("identif u: "+u.email);
-				System.out.println("identif u: "+u.mdp);
-				System.out.println("identif u: "+this.pseudo);
-				
 				if(this.email.equals(u.email) && this.mdp.equals(u.mdp))
 				{// email et mdp qui coincident
 					this.setPseudo(rs.getString("pseudo"));

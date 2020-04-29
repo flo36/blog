@@ -27,11 +27,12 @@
 		int idUser = (int) session.getAttribute("id");
 		String pseudoUser = (String) session.getAttribute("pseudo");
 		
+		System.out.println("id : " + idUser);
+		System.out.println("pseudo : " + pseudoUser);
+		
 		//recuperation du fil d'actualite
 		User u = new User(idUser, null, pseudoUser, null);
 		ArrayList<Post> filActualite = u.filActualite();
-		
-		System.out.println("id : " + idUser);
 		
 		for(Post p : filActualite)
 		{

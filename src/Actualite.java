@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Actualite
@@ -30,6 +31,10 @@ public class Actualite extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/Actualite.jsp").forward(request, response);
+		
+		HttpSession session = request.getSession();
+		session.getAttribute("pseudo");
+		session.getAttribute("id");
 		
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
