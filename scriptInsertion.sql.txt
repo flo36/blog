@@ -1,6 +1,6 @@
-CREATE DATABASE `bdd2_blog` CHARACTER SET utf8;
+CREATE DATABASE `bdd_blog` CHARACTER SET utf8;
 
-CREATE TABLE `bdd2_blog`.`users` ( `id` INT NOT NULL AUTO_INCREMENT , `email` VARCHAR(100) NOT NULL , `pseudo` VARCHAR(32) NOT NULL , `mdp` VARCHAR(64) NOT NULL , PRIMARY KEY (`id`)) ;
+CREATE TABLE `bdd_blog`.`users` ( `id` INT NOT NULL AUTO_INCREMENT , `email` VARCHAR(100) NOT NULL , `pseudo` VARCHAR(32) NOT NULL , `mdp` VARCHAR(64) NOT NULL , PRIMARY KEY (`id`)) ;
 
 CREATE TABLE `bdd_blog`.`amities` ( `id` INT NOT NULL AUTO_INCREMENT , `idUser1` INT NOT NULL , `idUser2` INT NOT NULL , PRIMARY KEY (`id`)) ;
 
@@ -13,7 +13,7 @@ CREATE TABLE `bdd_blog`.`demandeamis` ( `id` INT NOT NULL AUTO_INCREMENT , `idDe
 
 
 
-INSERT INTO users(email, pseudo, mdp) VALUES 
+INSERT INTO `bdd_blog`.`users`(email, pseudo, mdp) VALUES 
 ('root','root', 'root'),
 ('admin','admin', 'admin'),
 ('mael@orange.fr','mael', 'mael'),
@@ -32,7 +32,7 @@ INSERT INTO users(email, pseudo, mdp) VALUES
 ('chloe@sfr.fr', 'chloe','chloe'),
 ('margaux@sfr.fr', 'margaux','margaux');
 
-INSERT INTO amities (idUser1,idUser2) VALUES 
+INSERT INTO `bdd_blog`.`amities` (idUser1,idUser2) VALUES 
 (1,2),
 (1,3),
 (1,5),
@@ -56,7 +56,7 @@ INSERT INTO amities (idUser1,idUser2) VALUES
 (17,5),
 (17,1);
 
-INSERT INTO demandeamis (idDemandeur,idReceveur) VALUES 
+INSERT INTO `bdd_blog`.`demandeamis` (idDemandeur,idReceveur) VALUES 
 (1,4),
 (1,13),
 (1,18),
@@ -67,8 +67,8 @@ INSERT INTO demandeamis (idDemandeur,idReceveur) VALUES
 (6,11),
 (13,6);
 
-INSERT INTO posts (titre, texte, idUser) VALUES
-('L\'Albatros','Souvent, pour s\'amuser, les hommes d'équipage
+INSERT INTO `bdd_blog`.`posts` (titre, texte, idUser) VALUES
+('L\'Albatros','Souvent, pour s\'amuser, les hommes d\'équipage
 Prennent des albatros, vastes oiseaux des mers,
 Qui suivent, indolents compagnons de voyage,
 Le navire glissant sur les gouffres amers.
@@ -76,12 +76,12 @@ Le navire glissant sur les gouffres amers.
 A peine les ont-ils déposés sur les planches,
 Que ces rois de l\'azur, maladroits et honteux,
 Laissent piteusement leurs grandes ailes blanches
-Comme des avirons traîner à côté d'eux.
+Comme des avirons traîner à côté d\'eux.
 
 Ce voyageur ailé, comme il est gauche et veule!
-Lui, naguère si beau, qu'il est comique et laid!
+Lui, naguère si beau, qu\'il est comique et laid!
 L\'un agace son bec avec un brûle-gueule,
-L\'autre mime, en boitant, l'infirme qui volait!
+L\'autre mime, en boitant, l\'infirme qui volait!
 Le Poète est semblable au prince des nuées
 Qui hante la tempête et se rit de l\'archer;
 Exilé sur le sol au milieu des huées,
@@ -94,7 +94,7 @@ Le moindre vent, qui d\'aventure
 Fait rider la face de l\'eau,
 Vous oblige à baisser la tête :
 Cependant que mon front, au Caucase pareil,
-Non content d'arrêter les rayons du soleil,
+Non content d\'arrêter les rayons du soleil,
 Brave l\'effort de la tempête.
 Tout vous est Aquilon, tout me semble Zéphyr.
 Encor si vous naissiez à l\'abri du feuillage
@@ -123,7 +123,7 @@ Et dont les pieds touchaient à l\'Empire des Morts.',6),
 ('Le Rat de ville et le Rat des champs','Autrefois le Rat de ville
 Invita le Rat des champs,
 D\'une façon fort civile,
-A des reliefs d'Ortolans.
+A des reliefs d\'Ortolans.
 
 Sur un Tapis de Turquie
 Le couvert se trouva mis.
@@ -133,7 +133,7 @@ Que firent ces deux amis.
 Le régal fut fort honnête,
 Rien ne manquait au festin ;
 Mais quelqu\'un troubla la fête
-Pendant qu'ils étaient en train.
+Pendant qu\'ils étaient en train.
 
 A la porte de la salle
 Ils entendirent du bruit :
@@ -188,24 +188,24 @@ Où, rimant au milieu des ombres fantastiques,
 Comme des lyres, je tirais les élastiques
 De mes souliers blessés, un pied près de mon coeur !',8),
 
-('Il n\'y a pas d'amour heureux','Rien n\'est jamais acquis à l\'homme Ni sa force
+('Il n\'y a pas d\'amour heureux','Rien n\'est jamais acquis à l\'homme Ni sa force
 Ni sa faiblesse ni son coeur Et quand il croit
 Ouvrir ses bras son ombre est celle d\'une croix
 Et quand il croit serrer son bonheur il le broie
 Sa vie est un étrange et douloureux divorce
-Il n\'y a pas d'amour heureux
+Il n\'y a pas d\'amour heureux
 
 Sa vie Elle ressemble à ces soldats sans armes
 Qu\'on avait habillés pour un autre destin
 À quoi peut leur servir de se lever matin
 Eux qu\'on retrouve au soir désoeuvrés incertains
 Dites ces mots Ma vie Et retenez vos larmes
-Il n\'y a pas d'amour heureux
+Il n\'y a pas d\'amour heureux
 
 Mon bel amour mon cher amour ma déchirure
 Je te porte dans moi comme un oiseau blessé
 Et ceux-là sans savoir nous regardent passer
-Répétant après moi les mots que j'ai tressés
+Répétant après moi les mots que j\'ai tressés
 Et qui pour tes grands yeux tout aussitôt moururent
 Il n\'y a pas d\'amour heureux
 
@@ -214,14 +214,14 @@ Que pleurent dans la nuit nos coeurs à l\'unisson
 Ce qu\'il faut de malheur pour la moindre chanson
 Ce qu\'il faut de regrets pour payer un frisson
 Ce qu\'il faut de sanglots pour un air de guitare
-Il n\'y a pas d'amour heureux.
+Il n\'y a pas d\'amour heureux.
 
-Il n\'y a pas d'amour qui ne soit à douleur
-Il n\'y a pas d'amour dont on ne soit meurtri
-Il n\'y a pas d'amour dont on ne soit flétri
+Il n\'y a pas d\'amour qui ne soit à douleur
+Il n\'y a pas d\'amour dont on ne soit meurtri
+Il n\'y a pas d\'amour dont on ne soit flétri
 Et pas plus que de toi l\'amour de la patrie
-Il n\'y a pas d'amour qui ne vive de pleurs
-Il n\'y a pas d'amour heureux
+Il n\'y a pas d\'amour qui ne vive de pleurs
+Il n\'y a pas d\'amour heureux
 Mais c\'est notre amour à tous les deux',11),
 
 ('Chanson d\’automne','Les sanglots longs
@@ -294,7 +294,7 @@ A point perdu ceste vesprée
 Les plis de sa robe pourprée,
 Et son teint au vostre pareil.
 
-Las ! voyez comme en peu d'espace,
+Las ! voyez comme en peu d\'espace,
 Mignonne, elle a dessus la place
 Las ! las ses beautez laissé cheoir !
 Ô vrayment marastre Nature,
@@ -310,9 +310,9 @@ Fera ternir vostre beauté.',8),
 
 ('Nous dormirons ensemble','Que ce soit dimanche ou lundi
 Soir ou matin minuit midi
-Dans l'enfer ou le paradis
+Dans l\'enfer ou le paradis
 Les amours aux amours ressemblent
-C\'était hier que je t'ai dit
+C\'était hier que je t\'ai dit
 Nous dormirons ensemble
 
 C\'était hier et c\'est demain
@@ -577,7 +577,7 @@ Ni nager sous les yeux horribles des pontons.
 Arthur Rimbaud, Poésies',1);
 
 
-INSERT INTO commentaires (idPost, idUser, texte) VALUES
+INSERT INTO `bdd_blog`.`commentaires` (idPost, idUser, texte) VALUES
 (1,1,'Belle poèsie'),
 (3,3,'Le roseau plie mais jamais ne rompt'),
 (5,5,'Moquerie d\'un rat de ville sur la vie d\'un rat de campagne '),
