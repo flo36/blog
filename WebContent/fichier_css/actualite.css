@@ -1,0 +1,66 @@
+html
+{
+	background-color: rgb(200,200,200);
+}
+
+nav
+{
+	width: 100%;
+	height: 20%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-top: 2%;
+	background-color : orange;
+}
+
+#ligne
+{
+	width: 90%;
+	height: 60%;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 2%;
+}
+
+#actualite
+{
+	display: block;
+	width: 20%;
+	height: 100%;
+	flex-direction: column;
+	justify-content: flex-end;
+	box-sizing: border-box
+}
+
+#post
+{
+	display: block;
+	width: 100%;
+	height: 70%;
+	border: solid white;	
+	text-align: justify-all;
+	background-color: rgb(250,250,250);
+	color: orange;
+	margin-bottom: 3%;
+	box-sizing: border-box;
+	overflow : hidden;
+}
+
+#commentaire
+{
+	display: block;
+	width: 100%;
+	height: 20%;
+	border: solid white;	
+	background-color: rgb(250,250,250);
+	color: orange;
+	margin-top: 1%;
+	padding-bottom: 20%;
+	margin-bottom: 3%;
+	box-sizing: border-box;
+	overflow : hidden;
+}
+

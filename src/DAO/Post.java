@@ -68,10 +68,8 @@ public class Post {
 			// Loop over the database result set and create the
 			// user objects.
 			while (rs.next()) {
-				
 				Post p = new Post(rs.getInt("id"), rs.getInt("idUser"), rs.getString("titre"), rs.getString("texte"));
 				listPosts.add(p);
-				
 			}
 			// Free resources
 			rs.close();
@@ -80,22 +78,6 @@ public class Post {
 			e.printStackTrace();
 		} 
 		return listPosts;
-	}
-	
-	public ArrayList<Post> filActualite(User u)
-	{
-		ArrayList<Post> filActualite = new ArrayList<Post>();
-		ArrayList<Post> tousLesPosts = this.recupPosts();
-		
-		for(Post p: tousLesPosts)
-		{
-			if (u.estUnAmi(p.idUser))
-			{
-				filActualite.add(p);
-			}
-		}
-		
-		return filActualite;
 	}
 	
 	public boolean addPost()

@@ -20,6 +20,7 @@ public class User {
 	private static String FETCH_USERS_SQL = "SELECT id, email, pseudo, mdp FROM users";
 	private static String ADD_USERS_SQL = "INSERT INTO users(email, pseudo, mdp) VALUES ('";
 	private static String PARTICULAR_USER_SQL = "SELECT pseudo FROM users WHERE ";
+	private static String AMITIE_USER_SQL = "SELECT * FROM amities ";
 	
 	
 	public User(String _email, String _pseudo, String _mdp)
@@ -161,31 +162,7 @@ public class User {
 		} 
 	}
 	
-	public ArrayList<String> vosAmities()
-	{
-		ArrayList<String> listDesNoms = new ArrayList<String>();
-		ArrayList<Amitie> listAmities = new ArrayList<Amitie>();
-
-			Amitie tempo = new Amitie (0, 0);
-			listAmities = tempo.recupAmities();
-			// Loop over the database result set and create the
-			// user objects.
-			
-			for(Amitie a: listAmities) {
-				
-				if(a.getIdUser1() == this.getId())
-				{
-					listDesNoms.add(this.nomPersonne(a.getIdUser2()));
-				}
-				if(a.getIdUser2() == this.getId())
-				{
-					listDesNoms.add(this.nomPersonne(a.getIdUser1()));
-				}
-				
-			}
-		
-		return listDesNoms;
-	}
+	
 	
 	public String nomPersonne(int id)
 	{
@@ -210,10 +187,47 @@ public class User {
 		
 	}
 	
+	public ArrayList<Amitie> recupAmities()
+	{
+		ArrayList<Amitie> listAmities = new ArrayList<Amitie>();
+		Connection connection = dbConnect.getInstance();
+		Statement stmt;
+		try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(AMITIE_USER_SQL);
+			
+			while(rs.next())
+			{
+				Amitie liaison = new Amitie(rs.getInt("idUser1"),rs.getInt("idUser2"));
+				if(liaison.getIdUser1() == this.getId())
+				{
+					listAmities.add(liaison);
+				}
+				if(liaison.getIdUser2() == this.getId())
+				{
+					listAmities.add(liaison);
+				}
+				
+			}
+			
+			rs.close();
+			stmt.close();
+			
+			
+			 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listAmities;
+		
+	}
+	
 	public boolean estUnAmi(int idAmis)
 	{
 		
-		ArrayList<Amitie> listAmities = new ArrayList<Amitie>();
+		ArrayList<Amitie> listAmities = recupAmities();
 		for(Amitie a: listAmities)
 		{
 			if(a.getIdUser1()==this.id && a.getIdUser2()==idAmis)
@@ -227,6 +241,25 @@ public class User {
 			
 		}
 		 return false;
+	}
+	
+	public ArrayList<Post> filActualite()
+	{
+		ArrayList<Post> filActualite = new ArrayList<Post>();
+		Post tempo = new Post(0,null,null);
+		ArrayList<Post> tousLesPosts = tempo.recupPosts();
+		System.out.println(tousLesPosts.size());
+		
+		for(Post p: tousLesPosts)
+		{
+			System.out.println(this.estUnAmi(p.idUser));
+			if (this.estUnAmi(p.idUser))
+			{
+				filActualite.add(p);
+			}
+		}
+		
+		return filActualite;
 	}
 		
 }
