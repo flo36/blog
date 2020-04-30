@@ -4,6 +4,7 @@
     <%@ page import = "javax.servlet.http.HttpSession"  %>
     <%@ page import = "DAO.*"  %>
     <%@ page import = "java.util.ArrayList" %>
+    <%@ page import = "java.io.IOException" %>
     
 <!DOCTYPE html>
 <html>
@@ -47,9 +48,9 @@
 		
 	%>
 	
-	<divid="presentationDemande"><%= d.toString() %></div>
+	<div id="presentationDemande"><%= d.toString() %></div>
 	<form action="" method="post">
-				<input type="hidden" value="<%= d.getDemandeur() %>" name = "idDemandeAmis"/>
+				<input type="hidden" value="<%= d.getId() %>" name = "idDemande"/>
                 <input type="submit" value= "Accepter" name="refuser"/>
                 <input type="submit" value="Refuser" name="refuser"/>
             </form>
@@ -70,8 +71,9 @@
             <form action="" method="post">
                 <label class="mr-1">Pseudo : </label>
                 <input type="text" name="pseudo"><br>
-                <input type="submit" value="Valider" name="valider">
+                <input type="submit" value="Rechercher" name="refuser">
             </form>
+            
         </div>
 
 

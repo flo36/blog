@@ -293,9 +293,48 @@ public class User {
 		return lesDemandes;
 	}
 	
-	/*public ArrayList<String> rechercheAmis ()
+	public ArrayList<User> rechercheAmis (String pseudo)
 	{
-		ArrayList<String> rechercheAmis
-	}*/
+		ArrayList<User> rechercheAmis = new ArrayList<User>();
+		Connection connection = dbConnect.getInstance();
+		Statement stmt;
+		try {
+			stmt = connection.createStatement();
+			System.out.println("SELECT id, pseudo FROM users WHERE pseudo = '% " + pseudo + " %'");
+			ResultSet rs = stmt.executeQuery("SELECT id, pseudo FROM users WHERE pseudo = '% " + pseudo + " %'");
+			
+			while(rs.next())
+			{
+				rechercheAmis.add(new User(rs.getInt("id"), null, rs.getString("pseudo"), null));
+			}
+			
+			rs.close();
+			stmt.close();
+			
+			
+			 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		
+		
+		return rechercheAmis;
+	}
+	
+	public int rechercheByPseudo(String pseudo)
+	{
+		int idDuPseudo=0;
+		ArrayList<User> tous = this.recupUsers();
+		for(User a: tous)
+		{
+			if(a.getPseudo().contentEquals(pseudo))
+			{
+				return a.getId();
+			}
+		}
+		return idDuPseudo;
+	}
 		
 }

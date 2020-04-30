@@ -40,7 +40,7 @@ public class dbConnect {
 		if (null == connection) {
 			try {
 				Class.forName(JDBC_DRIVER);
-				connection = DriverManager.getConnection(DB_URL,USER,PASS);
+				connection = DriverManager.getConnection(DB_URL,USER,PASS); // penser a rajoute pass si besoin
 			} catch (ClassNotFoundException e) {
 				//Class.forName failed
 				e.printStackTrace();

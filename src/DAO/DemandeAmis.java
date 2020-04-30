@@ -15,7 +15,7 @@ public class DemandeAmis {
 	private int receveur;
 	
 	private static String FETCH_DEMANDES_SQL = "SELECT * FROM demandeAmis";
-	private static String ADD_DEMANDES_SQL = "INSERT INTO demandeAmis(email, pseudo, mdp) VALUES ('";
+	private static String ADD_DEMANDES_SQL = "INSERT INTO demandeAmis(idDemandeur, idReceveur) VALUES ('";
 	private static String PARTICULAR_DEMANDES_SQL = "SELECT * FROM demandeAmis WHERE ";
 	private static String ACCEPTE_DEMANDES_SQL = "DELETE FROM `demandeAmis` WHERE" ;
 	
@@ -82,6 +82,46 @@ public class DemandeAmis {
 		System.out.println("taille dans demandeAmis :" + listDemandes);
 		return listDemandes;
 	}
+	
+	public boolean addDemande()
+	{
+		boolean ajout = false;
+		Connection connection = dbConnect.getInstance();
+		Statement stmt;
+		
+		try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(FETCH_DEMANDES_SQL);
+			// Loop over the database result set and create the
+			// user objects.
+			while (rs.next()) {
+				
+				if(this.getReceveur()==(rs.getInt("idReceveur")) && this.getDemandeur()==(rs.getInt("idDemandeur")))
+				{// email deja pris
+					return false;
+				}
+				else if(this.getReceveur()==(rs.getInt("idDemandeur")) && this.getDemandeur()==(rs.getInt("idReceveur")))
+						{// email deja pris
+					return false;
+				}
+			}
+				System.out.println(ADD_DEMANDES_SQL + this.getDemandeur() + "','"
+												+ this.getReceveur() + "');");
+			 stmt.executeUpdate(ADD_DEMANDES_SQL + this.getDemandeur() + "','"
+												+ this.getReceveur() + "');");
+			 
+			 rs.close();
+			 stmt.close();
+			 ajout = true;
+			 return ajout;
+
+		}catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("erreur");
+			return false;
+		} 
+	}
+	
 	
 	public void accepteDemande(int idDemandeur, int idReceveur)
 	{
@@ -151,7 +191,7 @@ public class DemandeAmis {
 	
 	public DemandeAmis recupSpecifiqueDemande(int idDemandeur, int idReceveur)
 	{
-		DemandeAmis res = null;
+		DemandeAmis res = new DemandeAmis(0,0);
 		ArrayList<DemandeAmis> recup = this.recupDemande();
 		
 		for(DemandeAmis d: recup)
