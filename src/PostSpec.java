@@ -72,7 +72,7 @@ public class PostSpec extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		String contextpath = this.getServletContext().getContextPath();
 		HttpSession session = request.getSession();
 		
 		String commentaire = request.getParameter("message");
@@ -89,7 +89,7 @@ public class PostSpec extends HttpServlet {
 			System.out.println("erreur gamin");
 		}
 	
-			
+		response.sendRedirect(contextpath+"/Actualite");
 	}
 }
 

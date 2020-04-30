@@ -257,7 +257,7 @@ public class User {
 		
 		for(Post p: tousLesPosts)
 		{
-			if (this.estUnAmi(p.idUser))
+			if (this.estUnAmi(p.idUser)||p.idUser==this.id)
 			{
 				filActualite.add(p);
 			}
@@ -268,7 +268,7 @@ public class User {
 	
 	public Post postParticulier(int idPost)
 	{
-		Post res = null; 
+		Post res = new Post(0,null,null); 
 		for(Post p : this.filActualite())
 		{
 			if(p.getId()==idPost)
@@ -346,10 +346,11 @@ public class User {
 		ArrayList<Post> listeposts = new ArrayList<Post>();
 		Post tempo = new Post(0,null,null);
 		ArrayList<Post> listetouslesposts = tempo.recupPosts();
-		
+		System.out.println("id du user : " + this.getId());
 		for(Post p: listetouslesposts)
 		{
-			if(p.getNumUser()==this.getId())
+			System.out.println("id du user post : " + p.getNumUser());
+			if(p.getNumUser() == this.getId())
 			{
 				listeposts.add(p);
 			}

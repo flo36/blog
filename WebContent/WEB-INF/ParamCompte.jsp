@@ -16,15 +16,15 @@
 </head>
 <body>
 	<header>
-	<nav>
-	        <div class="d-flex justify-content-between">
+	
+	        <nav class="d-flex justify-content-between">
 	            <div class="logo"><img src="./images/logo_orange.jpg" alt="logo" width="30%" ></div>
 	            <button name="post" onclick="window.location.href='./Actualite';">Les Posts</button>
 	            <h1 class="mt-5"> Votre Compte</h1>
 	            <button name="amis" onclick="window.location.href='./LesAmis';">Amis</button>
 	            <button name="deconnexion" onclick="window.location.href='./Connexion';">Deconnexion</button>
-	        </div>
-	</nav>
+	        </nav>
+	
 	</header>
 
 
@@ -40,7 +40,7 @@
 	           int idUser = (int) session.getAttribute("id");
            	   String email = (String) session.getAttribute("email");
 	       	   String pseudoUser = (String) session.getAttribute("pseudo");
-	       	   User u = new User(email,pseudoUser,null);
+	       	   User u = new User(idUser,email,pseudoUser,null);
            %>
            
            <div>Email :<%= email %></div>
@@ -53,6 +53,7 @@
            
             <%
             ArrayList<Post> liste = u.postUser();
+            System.out.println(liste.size());
             if(liste!=null)
             {
             	String titre = "";
@@ -67,7 +68,7 @@
            
            <div>Titre :<br><%= titre %></div>
            <div>Texte :<br><%= texte %></div>
-           
+           <br>
            <%
             	}
             }
