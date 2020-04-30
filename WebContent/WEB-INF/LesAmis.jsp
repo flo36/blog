@@ -64,7 +64,7 @@
            			nomAmis = u.nomPersonne(a.getIdUser2());
            		}
            		else
-           			{System.out.println("ami user1 :" + a.getIdUser1());
+           			{System.out.println("ami user1	 :" + a.getIdUser1());
            			nomAmis = u.nomPersonne(a.getIdUser1());
            			}
            		

@@ -34,63 +34,64 @@
 		User u = new User(idUser, null, pseudoUser, null);
 		ArrayList<Post> filActualite = u.filActualite();
 		
-		for(Post p : filActualite)
-		{
-			System.out.println("titre : " + p.getTitre());
-		}
+		int idTour = 0;
+		String titre = "";
+		String texte = "";
+		String titre1 = "";
+		String texte1 = "";
+		String titre2 = "";
+		String texte2 = "";
+		String titre3 = "";
+		String texte3 = "";
 		
-		for(int i=0;i<filActualite.size();i++)
+		for(int i=0;i<filActualite.size(); i++)
 		{
-			String titre= "";
-			String texte=""; 
-			int id=0;
+			
 			
 		%>
 
 
 	<section id = "ligne">
 		<%
-		if(i<filActualite.size() && filActualite.get(i)!= null )
+		if(i%4==0)
 		{
-			id = filActualite.get(i).getId();
-			System.out.println("l'id dans le for apres modif : " + id);
-			titre = filActualite.get(i).getTitre();
-			texte = filActualite.get(i).getTexte();
+			 titre= filActualite.get(i).getTitre();
+			 texte= filActualite.get(i).getTexte(); 
 			i+=1;
-		}else {titre = ""; texte = "";}
+		}
 		%>
-		<div id="actualite" onclick="window.location.href='./postSpec?idPost=' +id+';'"> <div id="post"> <h4><% out.println(titre); %> </h4><p> <% out.println(texte);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
+		<div id="actualite" onclick="window.location.href='./PostSpec?idPost=<%=idTour%>&idPlace=0';"> <div id="post"> <h4><% out.println(titre); %> </h4><p> <% out.println(texte);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
 		<%
-		if(i<filActualite.size() && filActualite.get(i)!= null )
+		if(i%4==1)
 		{
-			titre = filActualite.get(i).getTitre();
-			texte = filActualite.get(i).getTexte();
+			 titre1= filActualite.get(i).getTitre();
+			 texte1= filActualite.get(i).getTexte(); 
 			i+=1;
-		}else {titre = ""; texte = "";}
+		}
 		%>
-		<div id="actualite" onclick="window.location.href='./PostSpec?idPost=' +id+';'"> <div id="post"> <h4><% out.println(titre); %> </h4><p> <% out.println(texte);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
+		<div id="actualite" onclick="window.location.href='./PostSpec?idPost=<%=idTour%>&idPlace=1';"><div id="post"> <h4><% out.println(titre1); %> </h4><p> <% out.println(texte1);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
 		<%
-		if(i<filActualite.size() && filActualite.get(i)!= null )
+		if(i%4==2)
 		{
-			titre = filActualite.get(i).getTitre();
-			texte = filActualite.get(i).getTexte();
+			 titre2= filActualite.get(i).getTitre();
+			 texte2= filActualite.get(i).getTexte(); 
 			i+=1;
-		}else {titre = ""; texte = "";}
+		}
 		%>
-		<div id="actualite" onclick="window.location.href='./PostSpec?idPost=' +id+';'"> <div id="post"> <h4><% out.println(titre); %> </h4><p> <% out.println(texte);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
+		<div id="actualite" onclick="window.location.href='./PostSpec?idPost=<%=idTour%>&idPlace=2';"><div id="post"> <h4><% out.println(titre2); %> </h4><p> <% out.println(texte2);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
 		<%
-		if(i<filActualite.size() && filActualite.get(i)!= null )
+		if(i%4==3)
 		{
-			titre = filActualite.get(i).getTitre();
-			texte = filActualite.get(i).getTexte();
-		}else {titre = ""; texte = "";}
+			 titre3= filActualite.get(i).getTitre();
+			 texte3= filActualite.get(i).getTexte(); 
+		}
 		%>
-		<div id="actualite" onclick="window.location.href='./postSpec?idPost=' +id+';'"> <div id="post"> <h4><% out.println(titre); %> </h4><p> <% out.println(texte);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
+		<div id="actualite" onclick="window.location.href='./PostSpec?idPost=<%=idTour%>&idPlace=3';"> <div id="post"> <h4><% out.println(titre3); %> </h4><p> <% out.println(texte3);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
 		
 	</section>
 
 		<%
-		
+		idTour+=1;
 		}
 		
 		%>

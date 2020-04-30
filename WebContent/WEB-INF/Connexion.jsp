@@ -16,14 +16,15 @@
 	    <form action="" method="POST">
 			
 			<div>
-			<label for="email" >Email : </label> <input type="text" id="email" name = "email"/>
+			<label for="email" >Email : </label> <input type="text" id="email" name = "email" value="quentin@orange.fr"/>
 			</div>
 
 			<div>
-			<label for="password" >Password : </label> <input type="password" id="password" name ="mdp" />
+			<label for="password" >Password : </label> <input type="password" id="password" name ="mdp" value= "quentin" />
 			</div>
 			
 			
+
 			<input type="submit" value="Submit" id="submit" />
 
 		</form>

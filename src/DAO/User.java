@@ -263,5 +263,10 @@ public class User {
 		
 		return filActualite;
 	}
+	
+	/*public ArrayList<String> rechercheAmis ()
+	{
+		ArrayList<String> rechercheAmis
+	}*/
 		
 }
