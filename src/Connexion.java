@@ -56,6 +56,7 @@ public class Connexion extends HttpServlet {
 					session.setAttribute("pseudo", u.getPseudo());
 					session.setAttribute("idPost", 0);
 					
+					System.out.println("je suis bien identifie");
 					// redirection vers la page des posts
 					this.getServletContext().getRequestDispatcher("/Actualite").forward(request, response);
 					

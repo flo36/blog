@@ -16,16 +16,16 @@ public class Post {
 	String texte;
 	
 	private static String FETCH_POSTS_SQL = "SELECT id, titre, texte, idUser FROM posts";
-	private static String ADD_POSTS_SQL = "INSERT INTO posts VALUES ('";
+	private static String ADD_POSTS_SQL = "INSERT INTO posts(titre,texte,idUser) VALUES ('";
 	
-	Post(int _numUser, String _titre, String _texte)
+	public Post(int _numUser, String _titre, String _texte)
 	{
 		this.idUser = _numUser;
 		this.titre = _titre;
 		this.texte = _texte;
 	}
 	
-	Post(int _id,int _numUser, String _titre, String _texte)
+	public Post(int _id,int _numUser, String _titre, String _texte)
 	{
 		this.id = _id;
 		this.idUser = _numUser;
@@ -89,12 +89,13 @@ public class Post {
 		try {
 			stmt = connection.createStatement();
 			
-
-			ResultSet rs = stmt.executeQuery(ADD_POSTS_SQL + this.idUser + " ' , ' "
+			System.out.println(ADD_POSTS_SQL + this.idUser + " ' , ' "
 												+ this.titre + " ' , ' " 
 												+ this.texte + " ' );");
+			 stmt.executeUpdate(ADD_POSTS_SQL + this.titre + " ' , ' "
+												+ this.texte + " ' , ' " 
+												+ this.idUser + " ' );");
 			 
-			 rs.close();
 			 stmt.close();
 			 ajout = true;
 			 return ajout;

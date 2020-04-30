@@ -58,13 +58,38 @@
 
 
 	<section id="droit">
-
+		
+		<% 
+		Commentaire tempo = new Commentaire(0,0,null);		
+		ArrayList<Commentaire> com = tempo.commentaireDuPost(idPost);
+		
+		for(int i=0; i<com.size();i++)
+		{
+			System.out.println("ici : " +u.nomPersonne(com.get(i).getIdUser()));
+			System.out.println("et la : " +com.get(i).getTexte());
+			String nom = u.nomPersonne(com.get(i).getIdUser());
+			String texte = com.get(i).getTexte();
+			String nom2 = "";
+			String texte2 = "";
+		%>
+		
 		<div class="deuxCommentaires">
 				
-				<div id="commentaire"><span id="nomAuteur"></span></div>
-				<div id="commentaire"><span id="nomAuteur"></span></div>
+				<div id="commentaire"><span id="nomAuteur"><%= nom  %><br><%= texte %></span></div>
+				<%
+					if(i+1<com.size())
+					{
+						nom2 = u.nomPersonne(com.get(i+1).getIdUser());
+					    texte2 = com.get(i+1).getTexte();
+						i+=1;
+					}
+				%>
+				<div id="commentaire"><span id="nomAuteur"><%= nom2 %><br><%= texte2 %> </span></div>
 
 		</div>
+		<%
+		}
+		%>
 
 	 </section>
 

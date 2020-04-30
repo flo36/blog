@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DAO.DemandeAmis;
+import DAO.Post;
+import DAO.User;
+
 /**
  * Servlet implementation class Actualite
  */
@@ -46,7 +50,23 @@ public class Actualite extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+HttpSession session = request.getSession();
+		
+		int idUser = (int) (session.getAttribute("id"));
+		String email = request.getParameter("email");
+		String mdp = request.getParameter("mdp");
+		User u = new User(idUser,email,null,mdp);
+		
+		String titre = request.getParameter("titre");
+		String texte = request.getParameter("texte");
+
+			Post postAjout = new Post(idUser,titre,texte);
+			postAjout.addPost();
+			
+
+		
+		//doGet(request, response);
 	}
 
 }
