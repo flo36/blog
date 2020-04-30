@@ -46,7 +46,6 @@ public class Connexion extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		String mdp = request.getParameter("mdp");
-		System.out.println(email +",+ " + mdp);
 		User u = new User(email,null,mdp);
 				
 				if(u.identification())

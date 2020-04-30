@@ -16,9 +16,9 @@
 <body>
 	
 	<nav>
-		<button name="compte">Param compte</button>
+		<button name="compte" onclick="window.location.href='./ParamCompte';">Param compte</button>
 		
-		<button name="amis">Vos amis</button>
+		<button name="amis" onclick="window.location.href='./LesAmis';">Vos amis</button>
 	</nav>
 
 		<% // recuperation du fil d'actualite
@@ -27,8 +27,6 @@
 		int idUser = (int) session.getAttribute("id");
 		String pseudoUser = (String) session.getAttribute("pseudo");
 		
-		System.out.println("id : " + idUser);
-		System.out.println("pseudo : " + pseudoUser);
 		
 		//recuperation du fil d'actualite
 		User u = new User(idUser, null, pseudoUser, null);
@@ -53,7 +51,7 @@
 
 	<section id = "ligne">
 		<%
-		if(i%4==0)
+		if(i%4==0 && i<filActualite.size())
 		{
 			 titre= filActualite.get(i).getTitre();
 			 texte= filActualite.get(i).getTexte(); 
@@ -62,7 +60,9 @@
 		%>
 		<div id="actualite" onclick="window.location.href='./PostSpec?idPost=<%=idTour%>&idPlace=0';"> <div id="post"> <h4><% out.println(titre); %> </h4><p> <% out.println(texte);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
 		<%
-		if(i%4==1)
+		titre = "";
+		texte = "";
+		if(i%4==1 && i<filActualite.size())
 		{
 			 titre1= filActualite.get(i).getTitre();
 			 texte1= filActualite.get(i).getTexte(); 
@@ -71,7 +71,9 @@
 		%>
 		<div id="actualite" onclick="window.location.href='./PostSpec?idPost=<%=idTour%>&idPlace=1';"><div id="post"> <h4><% out.println(titre1); %> </h4><p> <% out.println(texte1);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
 		<%
-		if(i%4==2)
+		titre1 = "";
+		texte1 = "";
+		if(i%4==2 && i<filActualite.size())
 		{
 			 titre2= filActualite.get(i).getTitre();
 			 texte2= filActualite.get(i).getTexte(); 
@@ -80,7 +82,9 @@
 		%>
 		<div id="actualite" onclick="window.location.href='./PostSpec?idPost=<%=idTour%>&idPlace=2';"><div id="post"> <h4><% out.println(titre2); %> </h4><p> <% out.println(texte2);%> </p></div><div id="commentaire"> <% out.println("Commenter ou voir les commentaires");  %>  </div> </div>
 		<%
-		if(i%4==3)
+		titre2 = "";
+		texte2 = "";
+		if(i%4==3 && i<filActualite.size())
 		{
 			 titre3= filActualite.get(i).getTitre();
 			 texte3= filActualite.get(i).getTexte(); 
@@ -91,6 +95,8 @@
 	</section>
 
 		<%
+		titre3 = "";
+		texte3 = "";
 		idTour+=1;
 		}
 		

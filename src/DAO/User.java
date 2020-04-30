@@ -250,11 +250,9 @@ public class User {
 		ArrayList<Post> filActualite = new ArrayList<Post>();
 		Post tempo = new Post(0,null,null);
 		ArrayList<Post> tousLesPosts = tempo.recupPosts();
-		System.out.println(tousLesPosts.size());
 		
 		for(Post p: tousLesPosts)
 		{
-			System.out.println(this.estUnAmi(p.idUser));
 			if (this.estUnAmi(p.idUser))
 			{
 				filActualite.add(p);
@@ -262,6 +260,37 @@ public class User {
 		}
 		
 		return filActualite;
+	}
+	
+	public Post postParticulier(int idPost)
+	{
+		Post res = null; 
+		for(Post p : this.filActualite())
+		{
+			if(p.getId()==idPost)
+			{
+				res = p;
+			}
+		}
+		return res;
+	}
+	
+	public ArrayList<DemandeAmis> getDemandeAmis()
+	{
+		ArrayList<DemandeAmis> lesDemandes = new ArrayList<DemandeAmis>() ;
+		DemandeAmis tempo = new DemandeAmis(0,0,0);
+		ArrayList<DemandeAmis> toutesLesDemandes = tempo.recupDemande();
+		System.out.println("taille toutes les demande Amis : " + toutesLesDemandes.size());
+		
+		for(DemandeAmis d: toutesLesDemandes)
+		{
+			if(d.getReceveur()== this.getId())
+			{
+				lesDemandes.add(d);
+			}
+		}
+		System.out.println("taille demande Amis : " + lesDemandes.size());
+		return lesDemandes;
 	}
 	
 	/*public ArrayList<String> rechercheAmis ()

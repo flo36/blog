@@ -16,16 +16,16 @@ public class Commentaire {
 	String texte;
 	
 	private static String FETCH_COMMENTAIRES_SQL = "SELECT id, idPost, idUser, texte FROM commentaires";
-	private static String ADD_COMMENTAIRES_SQL = "INSERT INTO commentaires VALUES ('";
+	private static String ADD_COMMENTAIRES_SQL = "INSERT INTO commentaires (idPost, idUser,texte) VALUES ('";
 	
-	Commentaire(int _numPost, int _numUser, String _texte)
+	public Commentaire(int _numPost, int _numUser, String _texte)
 	{
 		this.idPost = _numPost;
 		this.idUser = _numUser;
 		this.texte = _texte;
 	}
 	
-	Commentaire(int _id, int _numPost, int _numUser, String _texte)
+	public Commentaire(int _id, int _numPost, int _numUser, String _texte)
 	{
 		this.id = _id;
 		this.idPost = _numPost;
@@ -90,11 +90,10 @@ public class Commentaire {
 			stmt = connection.createStatement();
 			
 
-			ResultSet rs = stmt.executeQuery(ADD_COMMENTAIRES_SQL + this.idPost + " ' , ' "
+			stmt.executeUpdate(ADD_COMMENTAIRES_SQL + this.idPost + " ' , ' "
 												+ this.idUser + " ' , ' " 
 												+ this.texte + " ' );");
 			 
-			 rs.close();
 			 stmt.close();
 			 ajout = true;
 			 return ajout;

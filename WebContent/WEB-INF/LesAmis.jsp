@@ -25,7 +25,41 @@
 	</header>
 
 
-
+	<div class="demandeAmis"> 
+	
+	<h2 class=" mb-4">Demandes d'amis Reçues</h2>
+	
+	<% 
+	
+	int idUser = (int) session.getAttribute("id");
+	String pseudoUser = (String) session.getAttribute("pseudo");
+	
+	System.out.println("id : " + idUser);
+	System.out.println("pseudo : " + pseudoUser);
+	
+	//recuperation du fil d'actualite
+	User u = new User(idUser, null, pseudoUser, null);
+	
+	ArrayList<DemandeAmis> demandeRecues = u.getDemandeAmis();
+	
+	for(DemandeAmis d: demandeRecues)
+	{
+		
+	%>
+	
+	<divid="presentationDemande"><%= d.toString() %></div>
+	<form action="" method="post">
+				<input type="hidden" value="<%= d.getDemandeur() %>" name = "idDemandeAmis"/>
+                <input type="submit" value= "Accepter" name="refuser"/>
+                <input type="submit" value="Refuser" name="refuser"/>
+            </form>
+	<%
+	
+	}
+	
+	%>
+	
+	</div>
 
 
 
@@ -46,14 +80,11 @@
             <h2 class=" mb-4">Mes amis</h2>
            <%
            
-            int idUser = (int) session.getAttribute("id");
-            String pseudoUser = (String) session.getAttribute("pseudo");
    		
    			System.out.println("id a la base : " + idUser);
    			System.out.println("pseudo : " + pseudoUser);
    		
    			//recuperation des amities
-   			User u = new User(idUser, null, pseudoUser, null);
    			ArrayList<Amitie> amis = u.recupAmities();
    			String nomAmis = "";
    			System.out.println("la taille : " + amis.size());

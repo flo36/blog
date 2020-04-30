@@ -76,10 +76,9 @@ public class Amitie {
 			stmt = connection.createStatement();
 			
 
-			ResultSet rs = stmt.executeQuery(ADD_AMITIES_SQL + this.idUser1 + " ' , ' "
+			stmt.executeUpdate(ADD_AMITIES_SQL + this.idUser1 + " ' , ' "
 												+ this.idUser2 + " ' );");
 			 
-			 rs.close();
 			 stmt.close();
 			 ajout = true;
 			 return ajout;
