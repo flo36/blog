@@ -55,7 +55,6 @@ public class PostSpec extends HttpServlet {
 						this.getServletContext().getRequestDispatcher("/WEB-INF/PostSpec.jsp").forward(request, response);
 					}else
 					{
-						System.out.println("faut pas jouer avec mes nerfs");
 						this.getServletContext().getRequestDispatcher("/WEB-INF/Actualite.jsp").forward(request, response);
 					}
 					
@@ -84,10 +83,6 @@ public class PostSpec extends HttpServlet {
 		{
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Actualite.jsp").forward(request, response);
 		}	
-		else 
-		{
-			System.out.println("erreur gamin");
-		}
 	
 		response.sendRedirect(contextpath+"/Actualite");
 	}

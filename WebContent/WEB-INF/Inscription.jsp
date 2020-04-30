@@ -35,6 +35,9 @@
 			<input type="submit" value="Submit" id="submit" />
 
 		</form>
+		
+		<%if(request.getAttribute("error")!=null){ %>
+              <p class="text-danger">  <% out.print(request.getAttribute("error")); }%> </p>
 
 </body>
 </html>

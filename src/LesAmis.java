@@ -55,14 +55,12 @@ public class LesAmis extends HttpServlet {
 		User u = new User(idUser,email,null,mdp);
 		
 		String acc = request.getParameter("refuser");
-		System.out.println(request.getParameter("idDemandeurAmis"));
 		
 		if(acc.equals("Accepter"))
 		{
 			int idDemandeAmis = Integer.parseInt(request.getParameter("idDemande"));
 			DemandeAmis tempo = new DemandeAmis(0,0);
 			DemandeAmis bon = tempo.recupSpecifiqueDemande2(idDemandeAmis);
-			System.out.println(bon.toString());
 			tempo.accepteDemande(bon.getDemandeur(), bon.getReceveur());
 			
 		}
@@ -84,10 +82,6 @@ public class LesAmis extends HttpServlet {
 				DemandeAmis demande = new DemandeAmis(u.getId(),idDuMec);
 				demande.addDemande();
 			}
-			else
-				{
-					System.out.println("il n'existe personne avec ce pseudo");
-				}
 			
 			
 			

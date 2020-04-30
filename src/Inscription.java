@@ -37,19 +37,35 @@ public class Inscription extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		String message = "";
 		String contextpath = this.getServletContext().getContextPath();
 		String email = request.getParameter("email");
-		System.out.println(email);
 		String pseudo = request.getParameter("pseudo");
-		System.out.println(pseudo);
 		String mdp = request.getParameter("password");
 		String repeatMdp = request.getParameter("repeat");
-		System.out.println("mdp : " + mdp + "et repeat : " + repeatMdp);
 		
+		/*
+		if(pseudo==null); //pseudo.isEmpty ne fait pas ce qu'il faut non plus
+		{
+			message="Vous n'avez pas saisie de pseudo";
+            request.setAttribute("error", message);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
+		}
+		if(email.isEmpty() || !email.contains("@"));
+		{
+			message="Vous n'avez pas saisie d'adresse email valide";
+            request.setAttribute("error", message);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
+		}
+		if(mdp.isEmpty() || mdp.length()<3);
+		{
+			message="Vous n'avez pas saisie de mot de passe ou il n'est pas assez long";
+            request.setAttribute("error", message);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
+		}
+		*/
 		if(!repeatMdp.equals(mdp))
 		{ // les mdp ne sont pas identiques, retour au formulaire
-			System.out.println("probleme 1");
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
 		}
 		
@@ -69,7 +85,6 @@ public class Inscription extends HttpServlet {
 				else
 				{
 					// connexion pas bonne, on retourne au formulaire
-					System.out.println("probleme 2");
 					this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
 				}
 		

@@ -159,7 +159,6 @@ public class User {
 
 		}catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("erreur");
 			return false;
 		} 
 	}
@@ -181,7 +180,6 @@ public class User {
 			
 			rs.close();
 			stmt.close();
-			System.out.println("dans la méthode : " + res);
 			return res;
 			 
 		} catch (SQLException e) {
@@ -284,7 +282,6 @@ public class User {
 		ArrayList<DemandeAmis> lesDemandes = new ArrayList<DemandeAmis>() ;
 		DemandeAmis tempo = new DemandeAmis(0,0,0);
 		ArrayList<DemandeAmis> toutesLesDemandes = tempo.recupDemande();
-		System.out.println("taille toutes les demande Amis : " + toutesLesDemandes.size());
 		
 		for(DemandeAmis d: toutesLesDemandes)
 		{
@@ -293,7 +290,6 @@ public class User {
 				lesDemandes.add(d);
 			}
 		}
-		System.out.println("taille demande Amis : " + lesDemandes.size());
 		return lesDemandes;
 	}
 	
@@ -304,7 +300,6 @@ public class User {
 		Statement stmt;
 		try {
 			stmt = connection.createStatement();
-			System.out.println("SELECT id, pseudo FROM users WHERE pseudo = '% " + pseudo + " %'");
 			ResultSet rs = stmt.executeQuery("SELECT id, pseudo FROM users WHERE pseudo = '% " + pseudo + " %'");
 			
 			while(rs.next())
@@ -346,10 +341,8 @@ public class User {
 		ArrayList<Post> listeposts = new ArrayList<Post>();
 		Post tempo = new Post(0,null,null);
 		ArrayList<Post> listetouslesposts = tempo.recupPosts();
-		System.out.println("id du user : " + this.getId());
 		for(Post p: listetouslesposts)
 		{
-			System.out.println("id du user post : " + p.getNumUser());
 			if(p.getNumUser() == this.getId())
 			{
 				listeposts.add(p);

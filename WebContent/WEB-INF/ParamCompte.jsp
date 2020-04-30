@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <link rel="stylesheet" href="../fichier_css/paramCompte.css" />
+    <link rel="stylesheet" href="././fichier_css/paramCompte.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>Compte</title>
 
@@ -18,7 +18,7 @@
 	<header>
 	
 	        <nav class="d-flex justify-content-between">
-	            <div class="logo"><img src="./images/logo_orange.jpg" alt="logo" width="30%" ></div>
+	            <div class="logo"></div>
 	            <button name="post" onclick="window.location.href='./Actualite';">Les Posts</button>
 	            <h1 class="mt-5"> Votre Compte</h1>
 	            <button name="amis" onclick="window.location.href='./LesAmis';">Amis</button>
@@ -29,7 +29,8 @@
 
 
 
-
+	<br>
+	<br>
 
     <div class="d-flex justify-content-around mt-5">
 
@@ -48,7 +49,7 @@
            
         </div>
         
-          <div class="ml-5 mx-auto">
+          <div class="ml-5" id="droit">
             <h2 class=" mb-4">Vos Postes</h2>
            
             <%

@@ -11,25 +11,27 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <link rel="stylesheet" href="../fichier_css/paramComptes.css" />
+    <link rel="stylesheet" href="././fichier_css/paramCompte.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>Contact</title>
 
 </head>
 <body>
 	<header>
-	<nav>
-	        <div class="d-flex justify-content-between">
-	            <div class="logo"><img src="./images/logo_orange.jpg" alt="logo" width="30%" ></div>
+	
+	        <nav class="d-flex justify-content-between">
+	            <div class="logo"></div>
 	            <button name="post" onclick="window.location.href='./Actualite';">Les Posts</button>
-	            <h1 class="mt-5"> Vos amis</h1>
+	            <h1 class="mt-5"> Votre Compte</h1>
 	            <button name="amis" onclick="window.location.href='./LesAmis';">Amis</button>
 	            <button name="deconnexion" onclick="window.location.href='./Connexion';">Deconnexion</button>
-	        </div>
-	</nav>
+	        </nav>
+	
 	</header>
 
-
+	<br>
+	<br>
+	<br>
 	<div class="demandeAmis"> 
 	
 	<h2 class=" mb-4">Demandes d'amis Reçues</h2>
@@ -38,9 +40,6 @@
 	
 	int idUser = (int) session.getAttribute("id");
 	String pseudoUser = (String) session.getAttribute("pseudo");
-	
-	System.out.println("id : " + idUser);
-	System.out.println("pseudo : " + pseudoUser);
 	
 	//recuperation du fil d'actualite
 	User u = new User(idUser, null, pseudoUser, null);

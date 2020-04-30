@@ -31,8 +31,6 @@
 		int idUser = (int) session.getAttribute("id");
 		String pseudoUser = (String) session.getAttribute("pseudo");
 		
-		System.out.println("id : " + idUser);
-		System.out.println("pseudo : " + pseudoUser);
 		
 		//recuperation du fil d'actualite
 		User u = new User(idUser, null, pseudoUser, null);
@@ -70,8 +68,6 @@
 		
 		for(int i=0; i<com.size();i++)
 		{
-			System.out.println("ici : " +u.nomPersonne(com.get(i).getIdUser()));
-			System.out.println("et la : " +com.get(i).getTexte());
 			String nom = u.nomPersonne(com.get(i).getIdUser());
 			String texte = com.get(i).getTexte();
 			String nom2 = "";

@@ -43,7 +43,7 @@ public class Connexion extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		String message = " vos identifiants ne permettent pas de vous identifier";
 		String contextpath = this.getServletContext().getContextPath();
 		HttpSession session = request.getSession(true);
 		session.invalidate();
@@ -52,7 +52,6 @@ public class Connexion extends HttpServlet {
 		User u = new User(email,null,mdp);
 		session = request.getSession();
 		
-		System.out.println(u.getMdp() +" voila "+ u.getEmail());
 				if(u.identification())
 				{
 					// connexion bonne, on attribue une session
@@ -69,6 +68,8 @@ public class Connexion extends HttpServlet {
 				}
 				else
 				{
+					message="Votre adresse mail ou votre mot de passe est incorrecte";
+	                request.setAttribute("error", message);
 					// connexion pas bonne, on retourne au formulaire
 					this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
 				}

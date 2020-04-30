@@ -79,7 +79,6 @@ public class DemandeAmis {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		} 
-		System.out.println("taille dans demandeAmis :" + listDemandes);
 		return listDemandes;
 	}
 	
@@ -133,7 +132,6 @@ public class DemandeAmis {
 		try {
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(PARTICULAR_DEMANDES_SQL +" idDemandeur = " + idDemandeur + " AND idReceveur = " + idReceveur );
-			System.out.println("premiere requete faite");
 			// Loop over the database result set and create the
 			// user objects.
 			System.out.println("avant amitie");
@@ -145,10 +143,10 @@ public class DemandeAmis {
 				System.out.println("apres amitie");
 			}
 			
-			System.out.println(ACCEPTE_DEMANDES_SQL +" id = " + idDemande);
+
 			
 			stmt.executeUpdate(ACCEPTE_DEMANDES_SQL +" id = " + idDemande);
-			System.out.println("deuxieme requete faite");
+
 			// Free resources
 			rs.close();
 			stmt.close();
@@ -168,10 +166,10 @@ public class DemandeAmis {
 		try {
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(PARTICULAR_DEMANDES_SQL +" idDemandeur = " + idDemandeur + " AND idReceveur = " + idReceveur );
-			System.out.println("premiere requete faite");
+
 			// Loop over the database result set and create the
 			// user objects.
-			System.out.println("avant amitie");
+
 			while(rs.next())
 			{
 
@@ -179,7 +177,7 @@ public class DemandeAmis {
 			}
 						
 			stmt.executeUpdate(ACCEPTE_DEMANDES_SQL +" id = " + idDemande);
-			System.out.println("deuxieme requete faite");
+
 			// Free resources
 			rs.close();
 			stmt.close();

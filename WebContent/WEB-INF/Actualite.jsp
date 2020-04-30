@@ -15,11 +15,17 @@
 
 <body>
 	
-	<nav>
-		<button name="compte" onclick="window.location.href='./ParamCompte';">Param compte</button>
-		
-		<button name="amis" onclick="window.location.href='./LesAmis';">Vos amis</button>
-	</nav>
+<header>
+	
+	        <nav class="d-flex justify-content-between">
+	            <div class="logo"></div>
+	            <button name="post" onclick="window.location.href='./Actualite';">Les Posts</button>
+	            <h1 class="mt-5"> Votre Compte</h1>
+	            <button name="amis" onclick="window.location.href='./LesAmis';">Amis</button>
+	            <button name="deconnexion" onclick="window.location.href='./Connexion';">Deconnexion</button>
+	        </nav>
+	
+	</header>
 
 		<% // recuperation du fil d'actualite
 		
