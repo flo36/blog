@@ -48,6 +48,10 @@ public class User {
 		return pseudo;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -105,7 +109,7 @@ public class User {
 			// Loop over the database result set and create the
 			// user objects.
 			while (rs.next()) {
-				
+
 				User u = new User(rs.getInt("id"), rs.getString("email"), rs.getString("pseudo"), rs.getString("mdp"));
 				if(this.email.equals(u.email) && this.mdp.equals(u.mdp))
 				{// email et mdp qui coincident
@@ -335,6 +339,22 @@ public class User {
 			}
 		}
 		return idDuPseudo;
+	}
+	
+	public ArrayList<Post> postUser()
+	{
+		ArrayList<Post> listeposts = new ArrayList<Post>();
+		Post tempo = new Post(0,null,null);
+		ArrayList<Post> listetouslesposts = tempo.recupPosts();
+		
+		for(Post p: listetouslesposts)
+		{
+			if(p.getNumUser()==this.getId())
+			{
+				listeposts.add(p);
+			}
+		}
+		return listeposts;
 	}
 		
 }

@@ -14,11 +14,16 @@
 </head>
 <body>
 
+	<header>
 	<nav>
-		<button name="compte">Param compte</button>
-		
-		<button name="amis">Vos amis</button>
+	        <div class="d-flex justify-content-between">
+	            <div class="logo"><img src="./images/logo_orange.jpg" alt="logo" width="30%" ></div>
+	            <button name="post" onclick="window.location.href='./Actualite';">Les Posts</button>
+	            <button name="amis" onclick="window.location.href='./LesAmis';">Amis</button>
+	            <button name="deconnexion" onclick="window.location.href='./Connexion';">Deconnexion</button>
+	        </div>
 	</nav>
+	</header>
 
 	<% // recuperation du fil d'actualite
 		

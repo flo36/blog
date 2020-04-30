@@ -28,7 +28,7 @@ public class ParamCompte extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/ParamCompte.jsp").forward(request, response);
 		
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}

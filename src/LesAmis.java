@@ -46,7 +46,7 @@ public class LesAmis extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		
+		String contextpath = this.getServletContext().getContextPath();
 		HttpSession session = request.getSession();
 		
 		int idUser = (int) (session.getAttribute("id"));

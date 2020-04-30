@@ -7,15 +7,25 @@
     
 <!DOCTYPE html>
 <html>
-<header>
-        <div class="d-flex justify-content-between">
-            <div class="logo">
-            </div>
-            <h1 class="mt-5"> Vos Amis</h1>
-            <div></div>
-        </div>
-</header>
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="../fichier_css/paramCompte.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Compte</title>
+
+</head>
 <body>
+	<header>
+	<nav>
+	        <div class="d-flex justify-content-between">
+	            <div class="logo"><img src="./images/logo_orange.jpg" alt="logo" width="30%" ></div>
+	            <button name="post" onclick="window.location.href='./Actualite';">Les Posts</button>
+	            <h1 class="mt-5"> Votre Compte</h1>
+	            <button name="amis" onclick="window.location.href='./LesAmis';">Amis</button>
+	            <button name="deconnexion" onclick="window.location.href='./Connexion';">Deconnexion</button>
+	        </div>
+	</nav>
+	</header>
 
 
 
@@ -24,28 +34,48 @@
     <div class="d-flex justify-content-around mt-5">
 
         <div class="ml-5 mx-auto">
-            <h2 class=" mb-4">Nouveau contact</h2>
-            <form action="" method="post">
-                <label class="mr-1">Pseudo : </label>
-                <input type="text" name="pseudo"><br>
-                <input type="submit" value="Valider" name="valider">
-            </form>
-        </div>
-
-
-
-        <div class="mx-auto">
-            <h2 class=" mb-4">Mes amis</h2>
+            <h2 class=" mb-4">Informations Personnelles</h2>
+           
            <%
-           
-           
-           
+	           int idUser = (int) session.getAttribute("id");
+           	   String email = (String) session.getAttribute("email");
+	       	   String pseudoUser = (String) session.getAttribute("pseudo");
+	       	   User u = new User(email,pseudoUser,null);
            %>
-            <div class="">
-                <p><span>Pseudo 1</span></p>
-            </div>
+           
+           <div>Email :<%= email %></div>
+           <div>Pseudo :<%= pseudoUser %></div>
            
         </div>
+        
+          <div class="ml-5 mx-auto">
+            <h2 class=" mb-4">Vos Postes</h2>
+           
+            <%
+            ArrayList<Post> liste = u.postUser();
+            if(liste!=null)
+            {
+            	String titre = "";
+            	String texte = "";
+            	for(Post p : liste)
+            	{
+            		titre = p.getTitre();
+            		texte = p.getTexte();
+            	
+            
+           %>
+           
+           <div>Titre :<br><%= titre %></div>
+           <div>Texte :<br><%= texte %></div>
+           
+           <%
+            	}
+            }
+           %>
+           
+        </div>
+
+
 
     </div>
 

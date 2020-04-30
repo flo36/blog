@@ -43,23 +43,29 @@ public class Connexion extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
+		String contextpath = this.getServletContext().getContextPath();
+		HttpSession session = request.getSession(true);
+		session.invalidate();
 		String email = request.getParameter("email");
 		String mdp = request.getParameter("mdp");
 		User u = new User(email,null,mdp);
-				
+		session = request.getSession();
+		
+		System.out.println(u.getMdp() +" voila "+ u.getEmail());
 				if(u.identification())
 				{
 					// connexion bonne, on attribue une session
-					HttpSession session = request.getSession();
+					
 					session.setAttribute("id", u.getId());
 					session.setAttribute("pseudo", u.getPseudo());
+					session.setAttribute("email", email);
 					session.setAttribute("idPost", 0);
 					
 					System.out.println("je suis bien identifie");
 					// redirection vers la page des posts
-					this.getServletContext().getRequestDispatcher("/Actualite").forward(request, response);
-					
+					//this.getServletContext().getRequestDispatcher("/Actualite").forward(request, response);
+					response.sendRedirect(contextpath+"/Actualite");
 				}
 				else
 				{

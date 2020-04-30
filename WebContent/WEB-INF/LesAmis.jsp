@@ -18,11 +18,15 @@
 </head>
 <body>
 	<header>
+	<nav>
 	        <div class="d-flex justify-content-between">
-	            <div class="logo"></div>
-	            <h1 class="mt-5"> Vos Amis</h1>
-	            <div></div>
+	            <div class="logo"><img src="./images/logo_orange.jpg" alt="logo" width="30%" ></div>
+	            <button name="post" onclick="window.location.href='./Actualite';">Les Posts</button>
+	            <h1 class="mt-5"> Vos amis</h1>
+	            <button name="amis" onclick="window.location.href='./LesAmis';">Amis</button>
+	            <button name="deconnexion" onclick="window.location.href='./Connexion';">Deconnexion</button>
 	        </div>
+	</nav>
 	</header>
 
 

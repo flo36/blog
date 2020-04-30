@@ -38,6 +38,7 @@ public class Inscription extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		String contextpath = this.getServletContext().getContextPath();
 		String email = request.getParameter("email");
 		System.out.println(email);
 		String pseudo = request.getParameter("pseudo");
@@ -62,8 +63,8 @@ public class Inscription extends HttpServlet {
 					session.setAttribute("pseudo", u.getPseudo());
 					
 					// redirection vers la page des posts
-					this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
-					
+					//this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
+					response.sendRedirect(contextpath+"/Connexion"); 
 				}
 				else
 				{

@@ -102,12 +102,16 @@
 		
 		%>
 		
-				<form action="" method="POST">
+				 <form action="" method="POST">
 
-					 <label for="msg">Ecrire un Post :</label>
-        			 <textarea id="titre" name="titre" >Titre du post</textarea>
-        			 <textarea id="texte" name="texte" >Ecrivez ce que vous voulez nous dire</textarea>
-        			 <button type="submit" name="publier">Publier le Post</button>
+					 <label for="msg">Publier un post :</label>
+        			
+        			 <textarea id="titre" name="titre" >Le titre de votre post</textarea>
+        			 
+        			
+        			 <textarea id="texte" name="texte" >Ecrivez-nous ce que vous voulez</textarea>
+					
+        			 <input type="submit" value="Publier" name="publier" />
 
 				</form>
 	

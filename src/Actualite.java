@@ -51,7 +51,8 @@ public class Actualite extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-HttpSession session = request.getSession();
+		String contextpath = this.getServletContext().getContextPath();
+		HttpSession session = request.getSession();
 		
 		int idUser = (int) (session.getAttribute("id"));
 		String email = request.getParameter("email");
@@ -64,7 +65,7 @@ HttpSession session = request.getSession();
 			Post postAjout = new Post(idUser,titre,texte);
 			postAjout.addPost();
 			
-
+			this.getServletContext().getRequestDispatcher("/WEB-INF/Actualite.jsp").forward(request, response);
 		
 		//doGet(request, response);
 	}
